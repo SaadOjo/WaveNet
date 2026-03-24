@@ -1,0 +1,42 @@
+[
+  {
+    "data_id": "10",
+    "data_name": "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "model": "Random Forest",
+    "Accuracy": 0.7597585513078471,
+    "Precision": 0.7489312087057909,
+    "Recall": 0.7785858585858586,
+    "F1-score": 0.7634706814580031,
+    "ROC-AUC score": 0.8668387279609725
+  },
+  {
+    "data_id": "11",
+    "data_name": "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "model": "Random Forest",
+    "Accuracy": 0.85738430583501,
+    "Precision": 0.7601115760111576,
+    "Recall": 0.4328832406671962,
+    "F1-score": 0.5516194331983806,
+    "ROC-AUC score": 0.8637499515951086
+  },
+  {
+    "data_id": "12",
+    "data_name": "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "model": "Random Forest",
+    "Accuracy": 0.7243589743589743,
+    "Precision": 0.7625,
+    "Recall": 0.7176470588235294,
+    "F1-score": 0.7393939393939394,
+    "ROC-AUC score": 0.8383595691797846
+  },
+  {
+    "data_id": "13",
+    "data_name": "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "model": "Random Forest",
+    "Accuracy": 0.775,
+    "Precision": 0.7608695652173914,
+    "Recall": 0.8333333333333334,
+    "F1-score": 0.7954545454545454,
+    "ROC-AUC score": 0.8558897243107769
+  }
+]

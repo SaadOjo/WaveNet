@@ -1,0 +1,19 @@
+{
+  "model": "WaveNetTL",
+  "target_ids": [
+    "10",
+    "11",
+    "12",
+    "13"
+  ],
+  "datasets": [
+    "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500"
+  ],
+  "legacy_import": true,
+  "legacy_source": "/home/ortaboy/Projects/Churn_Prediction/Churn_Wavelet/container_workspace/wavelet_experimentation/results.json",
+  "legacy_scope": "wavelet_experimentation_subset_10_11_12_13",
+  "imported_at_fake_timestamp": "20240101_000003"
+}

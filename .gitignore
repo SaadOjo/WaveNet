@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+
+# Notebooks / editors
+.ipynb_checkpoints/
+*.swp
+*.swo
+.DS_Store
+
+# Environments
+.venv/
+venv/
+env/
+
+# Large data artifacts
+container_workspace/data/**
+!container_workspace/data/
+!container_workspace/data/dataset_config.json
+!container_workspace/data/dataset_config.csv
+!container_workspace/data/.gitignore
+
+# Generated caches / downloaded datasets
+container_workspace/data/cache/
+container_workspace/data/cifar-10-batches-py/
+container_workspace/data/cifar-10-python.tar.gz
+
+# Weights
+container_workspace/weights/*.pth
+container_workspace/weights/*.pt
+
+# W&B and transient outputs
+container_workspace/results/wandb/
+container_workspace/runs/*.log
+container_workspace/runs/*.pid
+
+# Local locks
+container_workspace/results/.~lock.*

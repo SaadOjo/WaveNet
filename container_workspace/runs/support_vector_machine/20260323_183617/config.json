@@ -1,0 +1,15 @@
+{
+  "model": "Support Vector Machine",
+  "target_ids": [
+    "10",
+    "11",
+    "12",
+    "13"
+  ],
+  "datasets": [
+    "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500"
+  ]
+}

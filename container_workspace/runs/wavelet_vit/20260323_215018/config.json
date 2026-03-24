@@ -1,0 +1,89 @@
+{
+  "model": "ViT_B_16_TransferLearning",
+  "target_ids": [
+    "10",
+    "11",
+    "12",
+    "13"
+  ],
+  "datasets": [
+    "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500"
+  ],
+  "batch_size": 16,
+  "wavelet": "morl",
+  "scales": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "epochs": 100,
+  "lr": 0.0001,
+  "weight_decay": 0.0001,
+  "step_size": 8,
+  "gamma": 0.3,
+  "norm_type": "none",
+  "colorize": true,
+  "resize_to": [
+    224,
+    224
+  ],
+  "patience": 20,
+  "label_smoothing": 0.1,
+  "optimizer_trainable_only": true,
+  "cache_dir": "/workspace/data/cache",
+  "use_cache": true,
+  "rebuild_cache": false,
+  "model_config": {
+    "backbone": "vit_b_16",
+    "dropout": 0.5,
+    "unlock_last_block": true,
+    "pretrained_weights": "ViT_B_16_Weights.DEFAULT"
+  },
+  "wandb_enabled": true,
+  "wandb_project": "wavenet-project",
+  "wandb_group": "wavelet_vit_real",
+  "wandb_tags": [
+    "vit",
+    "wavelet",
+    "transfer-learning",
+    "real-run"
+  ],
+  "execution_plan": {
+    "gpu0": {
+      "gpu_id": 0,
+      "datasets": [
+        "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data"
+      ],
+      "run_dir": "/workspace/runs/wavelet_vit_real_gpu0/20260323_214849"
+    },
+    "gpu1": {
+      "gpu_id": 1,
+      "datasets": [
+        "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+        "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+        "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500"
+      ],
+      "run_dir": "/workspace/runs/wavelet_vit_real_gpu1/20260323_212338"
+    }
+  }
+}

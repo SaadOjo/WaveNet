@@ -1,0 +1,42 @@
+[
+  {
+    "data_id": "10",
+    "data_name": "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "model": "SmallWaveNetTL",
+    "Accuracy": 0.7744466800804829,
+    "Precision": 0.7820833333333334,
+    "Recall": 0.7583838383838384,
+    "F1-score": 0.770051282051282,
+    "ROC-AUC score": 0.871099775308192
+  },
+  {
+    "data_id": "11",
+    "data_name": "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "model": "SmallWaveNetTL",
+    "Accuracy": 0.8606841046277666,
+    "Precision": 0.7671418873048201,
+    "Recall": 0.448768864177919,
+    "F1-score": 0.5662741167627161,
+    "ROC-AUC score": 0.8632366192243945
+  },
+  {
+    "data_id": "12",
+    "data_name": "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "model": "SmallWaveNetTL",
+    "Accuracy": 0.782051282051282,
+    "Precision": 0.7802197802197802,
+    "Recall": 0.8352941176470589,
+    "F1-score": 0.8068181818181818,
+    "ROC-AUC score": 0.8729080364540183
+  },
+  {
+    "data_id": "13",
+    "data_name": "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "model": "SmallWaveNetTL",
+    "Accuracy": 0.825,
+    "Precision": 0.7916666666666666,
+    "Recall": 0.9047619047619048,
+    "F1-score": 0.8444444444444444,
+    "ROC-AUC score": 0.918546365914787
+  }
+]

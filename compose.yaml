@@ -1,0 +1,26 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: churn-wavelet-refactor:latest
+    container_name: churn-wavelet-refactor
+    working_dir: /workspace
+    command: ["bash", "-lc", "sleep infinity"]
+    stdin_open: true
+    tty: true
+    privileged: true
+    environment:
+      DISPLAY: ${DISPLAY}
+    volumes:
+      - ./container_workspace:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    ports:
+      - "8888:8888"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

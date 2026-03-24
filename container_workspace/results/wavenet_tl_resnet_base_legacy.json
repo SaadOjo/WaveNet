@@ -1,0 +1,42 @@
+[
+  {
+    "data_id": "10",
+    "data_name": "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "model": "WaveNet_TL_Resnet_Base",
+    "Accuracy": 0.7267605633802817,
+    "Precision": 0.7269402681836652,
+    "Recall": 0.7228282828282828,
+    "F1-score": 0.7248784440842788,
+    "ROC-AUC score": 0.8258141333171393
+  },
+  {
+    "data_id": "11",
+    "data_name": "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "model": "WaveNet_TL_Resnet_Base",
+    "Accuracy": 0.820523138832998,
+    "Precision": 0.5655737704918032,
+    "Recall": 0.4932486100079428,
+    "F1-score": 0.5269410267288926,
+    "ROC-AUC score": 0.8170511571755532
+  },
+  {
+    "data_id": "12",
+    "data_name": "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "model": "WaveNet_TL_Resnet_Base",
+    "Accuracy": 0.5833333333333334,
+    "Precision": 0.6351351351351351,
+    "Recall": 0.5529411764705883,
+    "F1-score": 0.5911949685534591,
+    "ROC-AUC score": 0.6773819386909694
+  },
+  {
+    "data_id": "13",
+    "data_name": "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "model": "WaveNet_TL_Resnet_Base",
+    "Accuracy": 0.6375,
+    "Precision": 0.7096774193548387,
+    "Recall": 0.5238095238095238,
+    "F1-score": 0.6027397260273972,
+    "ROC-AUC score": 0.6967418546365916
+  }
+]

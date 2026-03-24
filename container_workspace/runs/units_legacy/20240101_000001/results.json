@@ -1,0 +1,42 @@
+[
+  {
+    "data_id": "10",
+    "data_name": "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "model": "UniTS",
+    "Accuracy": 0.7249496981891348,
+    "Precision": 0.7187993680884676,
+    "Recall": 0.7353535353535353,
+    "F1-score": 0.7269822248851608,
+    "ROC-AUC score": 0.8042787797817859
+  },
+  {
+    "data_id": "11",
+    "data_name": "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "model": "UniTS",
+    "Accuracy": 0.8367806841046278,
+    "Precision": 0.693217665615142,
+    "Recall": 0.3490865766481334,
+    "F1-score": 0.4643423137876387,
+    "ROC-AUC score": 0.8074404712034792
+  },
+  {
+    "data_id": "12",
+    "data_name": "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "model": "UniTS",
+    "Accuracy": 0.48717948717948717,
+    "Precision": 0.5229357798165137,
+    "Recall": 0.6705882352941176,
+    "F1-score": 0.5876288659793814,
+    "ROC-AUC score": 0.47307373653686824
+  },
+  {
+    "data_id": "13",
+    "data_name": "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "model": "UniTS",
+    "Accuracy": 0.4875,
+    "Precision": 0.5081967213114754,
+    "Recall": 0.7380952380952381,
+    "F1-score": 0.6019417475728156,
+    "ROC-AUC score": 0.5031328320802005
+  }
+]

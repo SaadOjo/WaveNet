@@ -1,0 +1,42 @@
+[
+  {
+    "data_id": "10",
+    "data_name": "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "model": "XGBoost",
+    "Accuracy": 0.7732394366197183,
+    "Precision": 0.7661927330173776,
+    "Recall": 0.7838383838383839,
+    "F1-score": 0.774915118833633,
+    "ROC-AUC score": 0.8718929576324366
+  },
+  {
+    "data_id": "11",
+    "data_name": "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "model": "XGBoost",
+    "Accuracy": 0.8599597585513078,
+    "Precision": 0.747141041931385,
+    "Recall": 0.4670373312152502,
+    "F1-score": 0.5747800586510264,
+    "ROC-AUC score": 0.8632695706287696
+  },
+  {
+    "data_id": "12",
+    "data_name": "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "model": "XGBoost",
+    "Accuracy": 0.7307692307692307,
+    "Precision": 0.7529411764705882,
+    "Recall": 0.7529411764705882,
+    "F1-score": 0.7529411764705882,
+    "ROC-AUC score": 0.8374482187241095
+  },
+  {
+    "data_id": "13",
+    "data_name": "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "model": "XGBoost",
+    "Accuracy": 0.8,
+    "Precision": 0.7708333333333334,
+    "Recall": 0.8809523809523809,
+    "F1-score": 0.8222222222222222,
+    "ROC-AUC score": 0.8471177944862156
+  }
+]
