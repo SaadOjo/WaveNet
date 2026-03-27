@@ -1,0 +1,12 @@
+[
+  {
+    "data_id": "20",
+    "data_name": "data20_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "model": "SmallWaveNetV3_Base",
+    "Accuracy": 0.8140753327669216,
+    "Precision": 0.8226183518410286,
+    "Recall": 0.7994887815961375,
+    "F1-score": 0.8108886648422872,
+    "ROC-AUC score": 0.9056862881291347
+  }
+]

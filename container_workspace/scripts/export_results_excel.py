@@ -19,9 +19,15 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.io import project_root
 
 METRICS = ["Accuracy", "Precision", "Recall", "F1-score", "ROC-AUC score"]
-CLASSICAL_MODELS = {"Random Forest", "Support Vector Machine", "XGBoost"}
+DISPLAY_CLASSICAL_MODELS = ["Random Forest", "XGBoost"]
+HIDDEN_MODELS = {"Support Vector Machine"}
 MODEL_ORDER = [
+    "Random Forest",
+    "XGBoost",
+    "UniTS",
     "WaveNet",
+    "SmallWaveNetTL",
+    "WaveNetTL",
     "WaveNet_TL_CIFAR",
     "WaveNet_TL_Resnet_Base",
     "ResNeXt50_TransferLearning",
@@ -117,29 +123,23 @@ def sort_models(models: list[str]) -> list[str]:
 def build_dataset_view(records: list[dict]):
     dataset_metric_model = defaultdict(lambda: defaultdict(dict))
     datasets = set()
-    non_classical_models = set()
+    models = set()
 
     for row in records:
         dataset = row["data_name"]
         model = row["model"]
+        if model in HIDDEN_MODELS:
+            continue
         datasets.add(dataset)
-        if model not in CLASSICAL_MODELS:
-            non_classical_models.add(model)
+        models.add(model)
         for metric in METRICS:
             value = row.get(metric)
             if value is not None:
                 dataset_metric_model[dataset][metric][model] = value
 
     datasets = sorted(datasets)
-    non_classical_models = sort_models(list(non_classical_models))
-    return datasets, non_classical_models, dataset_metric_model
-
-
-def classical_best(metric_values: dict[str, float]) -> float | None:
-    values = [value for model, value in metric_values.items() if model in CLASSICAL_MODELS and value is not None]
-    if not values:
-        return None
-    return max(values)
+    models = sort_models(list(models))
+    return datasets, models, dataset_metric_model
 
 
 def autosize(ws):
@@ -153,17 +153,25 @@ def autosize(ws):
         ws.column_dimensions[col].width = min(width + 2, 28)
 
 
+def is_numeric(value) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
 def build_workbook(records: list[dict], output_path: Path, metadata_map: dict[str, dict]):
     if not records:
         raise SystemExit("No run results found under runs/ to export.")
 
-    datasets, non_classical_models, dataset_metric_model = build_dataset_view(records)
+    datasets, display_models, dataset_metric_model = build_dataset_view(records)
 
     wb = Workbook()
     ws = wb.active
     ws.title = "by_dataset"
 
-    header = ["Dataset", "Metric", "Best Classical", *non_classical_models]
+    ordered_display_models = [
+        *[model for model in DISPLAY_CLASSICAL_MODELS if model in display_models],
+        *[model for model in display_models if model not in DISPLAY_CLASSICAL_MODELS],
+    ]
+    header = ["Dataset", "Metric", *ordered_display_models]
     ws.append(header)
 
     header_fill = PatternFill("solid", fgColor="4A4A4A")
@@ -189,8 +197,8 @@ def build_workbook(records: list[dict], output_path: Path, metadata_map: dict[st
         start_row = current_row
         for metric in METRICS:
             metric_values = dataset_metric_model[dataset].get(metric, {})
-            row = [pretty_label, metric, classical_best(metric_values)]
-            for model in non_classical_models:
+            row = [pretty_label, metric]
+            for model in ordered_display_models:
                 row.append(metric_values.get(model))
             ws.append(row)
             current_row += 1
@@ -209,28 +217,28 @@ def build_workbook(records: list[dict], output_path: Path, metadata_map: dict[st
 
             numeric_values = []
             row_cells = []
-            for col_idx in range(3, 4 + len(non_classical_models)):
+            for col_idx in range(3, 3 + len(ordered_display_models)):
                 cell = ws.cell(row=row_idx, column=col_idx)
                 cell.font = body_font
                 cell.fill = white_fill
                 cell.alignment = Alignment(horizontal="center", vertical="center")
-                if isinstance(cell.value, (float, int)):
+                if is_numeric(cell.value):
                     cell.number_format = "0.0000"
-                    numeric_values.append(cell.value)
+                    numeric_values.append(float(cell.value))
                 row_cells.append(cell)
 
             if numeric_values:
                 best_value = max(numeric_values)
                 for cell in row_cells:
-                    if isinstance(cell.value, (float, int)) and cell.value == best_value:
+                    if is_numeric(cell.value) and abs(float(cell.value) - best_value) <= 1e-12:
                         cell.font = best_font
 
         for row_idx in range(start_row, end_row + 1):
-            for col_idx in range(1, 4 + len(non_classical_models)):
+            for col_idx in range(1, 3 + len(ordered_display_models)):
                 cell = ws.cell(row=row_idx, column=col_idx)
                 cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
-        for col_idx in range(1, 4 + len(non_classical_models)):
+        for col_idx in range(1, 3 + len(ordered_display_models)):
             ws.cell(row=end_row, column=col_idx).border = Border(left=thin, right=thin, top=thin, bottom=medium)
 
     ws.freeze_panes = "A2"
@@ -238,6 +246,8 @@ def build_workbook(records: list[dict], output_path: Path, metadata_map: dict[st
     autosize(ws)
     ws.column_dimensions["A"].width = 26
     ws.column_dimensions["B"].width = 14
+
+    filtered_records = [row for row in records if row.get("model") not in HIDDEN_MODELS]
 
     raw = wb.create_sheet("latest_raw")
     raw_headers = ["run_id", "script_name", "data_id", "data_name", "model", *METRICS, "run_dir"]
@@ -248,7 +258,7 @@ def build_workbook(records: list[dict], output_path: Path, metadata_map: dict[st
         cell.alignment = Alignment(horizontal="center", vertical="center")
         cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
-    for row in sorted(records, key=lambda r: (r["data_name"], r["model"])):
+    for row in sorted(filtered_records, key=lambda r: (r["data_name"], r["model"])):
         raw.append([row.get(key) for key in raw_headers])
 
     for row in raw.iter_rows(min_row=2):

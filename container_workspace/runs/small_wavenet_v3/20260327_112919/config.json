@@ -1,0 +1,42 @@
+{
+  "model": "SmallWaveNetV3",
+  "target_ids": [
+    "10",
+    "11",
+    "12",
+    "13",
+    "20",
+    "21",
+    "22",
+    "23",
+    "30",
+    "31"
+  ],
+  "datasets": [
+    "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "data20_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data21_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data22_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data23_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "data30_CJ_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data31_CJ_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data"
+  ],
+  "variant": "v3",
+  "transfer_learning": false,
+  "source_run_dirs": [
+    "container_workspace/runs/small_wavenet_v3_d10/20260327_083056",
+    "container_workspace/runs/small_wavenet_v3_d11/20260327_083142",
+    "container_workspace/runs/small_wavenet_v3_d12/20260327_082935",
+    "container_workspace/runs/small_wavenet_v3_d13/20260327_082947",
+    "container_workspace/runs/small_wavenet_v3_d20/20260327_083237",
+    "container_workspace/runs/small_wavenet_v3_d21/20260327_083751",
+    "container_workspace/runs/small_wavenet_v3_d22/20260327_082942",
+    "container_workspace/runs/small_wavenet_v3_d23/20260327_082953",
+    "container_workspace/runs/small_wavenet_v3_d30/20260327_082955",
+    "container_workspace/runs/small_wavenet_v3_d31/20260327_082947"
+  ],
+  "parallel_group_timestamp": "20260327_112919"
+}

@@ -1,0 +1,27 @@
+{
+  "model": "XGBoost",
+  "target_ids": [
+    "10",
+    "11",
+    "12",
+    "13",
+    "20",
+    "21",
+    "22",
+    "23",
+    "30",
+    "31"
+  ],
+  "datasets": [
+    "data10_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data11_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data12_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data13_IC1_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "data20_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data21_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data",
+    "data22_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_5000",
+    "data23_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_max_2500",
+    "data30_CJ_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data",
+    "data31_CJ_FM_label_wl_20_pw_0_unwo_dropped_1_4_ratio_full_data"
+  ]
+}

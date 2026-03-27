@@ -1,0 +1,2 @@
+data_id,data_name,model,Accuracy,Precision,Recall,F1-score,ROC-AUC score
+20,data20_IC2_FM_label_wl_20_pw_0_unwo_dropped_1_1_ratio_full_data,SmallWaveNetV3_Base,0.8140753327669216,0.8226183518410286,0.7994887815961375,0.8108886648422872,0.9056862881291347
