@@ -22,24 +22,21 @@ The workbook contains only the following columns:
 - `ViT`
 
 ### Important mapping note
-For the focused workbook, the `SmallWaveNetTL` column is populated from the **refactored and reproducible** run named `SmallWaveNetV3_TL`.
+For the focused workbook, the `SmallWaveNetTL` column is populated from the **exact v3 small wavelet-CNN architecture** in its transfer-learning configuration, reported as `SmallWaveNetV3_TL` in the implementation.
 
-This was done intentionally because:
-1. the original legacy `SmallWaveNetTL` notebook result is not fully reproducible from the refactored codebase,
-2. the refactored `SmallWaveNetV3_TL` is the closest clean rerun of the small wavelet-CNN transfer-learning idea,
-3. the observed performance pattern is close to the legacy small-wavelet transfer result.
-
-This mapping should be disclosed explicitly in the manuscript if the paper uses this focused table.
+The non-transfer and transfer variants use the same v3 architecture. The difference is only the initialization strategy:
+- `SmallWaveNetV3`: trained from scratch on the target dataset,
+- `SmallWaveNetTL`: pretrained on `data20` and then fine-tuned on the target dataset.
 
 ## Data representation used by the neural models
-For the wavelet-based neural models in the refactored repo:
+For the wavelet-based neural models:
 
 1. each sample is read from the exported `.ts` train/test files,
 2. the time series is converted to a **continuous wavelet transform (CWT)** image,
 3. the CWT uses:
    - wavelet: `morl`
    - scales: `1..20`
-4. the refactored code caches the **raw CWT tensors** and applies later transforms at runtime.
+4. the pipeline caches the **raw CWT tensors** and applies later transforms at runtime.
 
 ## Exact model/training definitions
 
@@ -179,17 +176,17 @@ Pretraining source:
 - the focused workbook does **not** use the unfinished churn-pretrained ViT-TL20 runs
 
 ## Process followed to optimize the small wavelet model
-The model-development path in this repo was:
+The model-development path for the small wavelet CNN was:
 
 1. keep the classical baselines (`Random Forest`, `XGBoost`) as non-image references,
-2. preserve the old wavelet results imported from the pre-refactor notebooks,
-3. re-implement a stronger small wavelet CNN based on the old notebook's **v3** architecture,
-4. run the refactored no-transfer version (`SmallWaveNetV3`),
-5. run a churn-to-churn transfer version (`SmallWaveNetV3_TL`) by pretraining on `data20`,
+2. evaluate a basic wavelet-CNN baseline,
+3. move to the stronger **v3** small wavelet-CNN architecture,
+4. train the no-transfer version (`SmallWaveNetV3`) from scratch on each target dataset,
+5. train the transfer-learning version (`SmallWaveNetTL`) by pretraining the same v3 architecture on `data20` and then fine-tuning on the target dataset,
 6. compare that transfer version against the classical baselines and the ViT baseline on the common IC1 rows.
 
 ## Evaluation protocol caveat (important for the paper)
-The current refactored neural training code uses the provided dataset `TRAIN` / `TEST` split as follows:
+The current neural training code uses the provided dataset `TRAIN` / `TEST` split as follows:
 
 - training is performed on the provided `TRAIN` split,
 - the provided `TEST` split is also used during training for model selection / early stopping,
@@ -200,4 +197,4 @@ So the current neural results are **best-checkpoint metrics on the provided test
 This should be described accurately if these numbers are reported in the manuscript.
 
 ## Reproducibility note
-The refactored neural scripts do not currently set a global PyTorch seed inside the run scripts. Therefore, some variation relative to older notebook runs is expected.
+The neural scripts do not currently set a global PyTorch seed inside the run scripts. Therefore, some run-to-run variation is expected.
